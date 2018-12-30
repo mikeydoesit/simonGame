@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Simon Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&effect=outline:400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
 
     <audio id="clip1">
@@ -20,8 +20,33 @@
     <audio id="clip4">
       <source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3">
     </audio>
-  </head>
-  <body>
 
+  </head>
+
+  <body>
+    <div id="outer-circle">
+      <div id="topLeft"></div>
+      <div id="topRight"></div>
+      <div id="bottomLeft"></div>
+      <div id="bottomRight"></div>
+      <div id="inner-circle">
+        <div id="title" class="font-effect-outline">SIMON!</div>
+        <div id="switches">
+          <input type="checkbox" class="toggle" id="powerBtn">
+          <button class="button" id="start">Start</button>
+          <input type="checkbox" class="toggle" id="strict">
+        </div>
+        <div class="text1">
+          <span>POWER</span><span>STRICT</span>
+        </div>
+        <div id="turn"></div>
+        <div class="text2">
+          COUNT
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
+
 </html>
