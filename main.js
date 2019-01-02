@@ -10,11 +10,28 @@ let noise = true;
 let on = false; // Keep track of whether the power button is checked or not
 let win; // A boolean value to see whether player has won game or not
 
-const turnCounter = document.queryselector('#turn');
-const topLeft = document.queryselector('#topLeft');
-const topRight = document.queryselector('#topRight');
-const bottomLeft = document.queryselector('#bottomLeft');
-const bottomRight = document.queryselector('#bottomRight');
-const strictButton = document.queryselector('#strict');
-const powerButton = document.queryselector('#powerBtn');
-const startButton = document.queryselector('#start');
+const turnCounter = document.querySelector('#turn');
+const topLeft = document.querySelector('#topLeft');
+const topRight = document.querySelector('#topRight');
+const bottomLeft = document.querySelector('#bottomLeft');
+const bottomRight = document.querySelector('#bottomRight');
+const strictButton = document.querySelector('#strict');
+const powerButton = document.querySelector('#powerBtn');
+const startButton = document.querySelector('#start');
+
+strictButton.addEventListener('click', (event) => {
+  if(strictButton.checked == true) {
+    strict = true;
+  } else {
+    strict = false;
+  }
+})
+powerButton.addEventListener('click', (event) => {
+  if (powerButton.checked == true) {
+    on = true;
+    turnCounter.innerHTML = '-';
+  } else {
+    on = false;
+    turnCounter.innerHTML = '';
+  }
+})
