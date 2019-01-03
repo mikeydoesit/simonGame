@@ -125,6 +125,12 @@ function clearColour() {
   bottomLeft.style.backgroundColor = 'goldenrod';
   bottomRight.style.backgroundColor = 'darkblue';
 }
+function flashColour() {
+  topLeft.style.backgroundColor = 'lightgreen';
+  topRight.style.backgroundColor = 'tomato';
+  bottomLeft.style.backgroundColor = 'yellow';
+  bottomRight.style.backgroundColor = 'lightskyblue';
+}
 
 topLeft.addEventListener('click', (event) => {
   if (on) {
@@ -174,3 +180,47 @@ bottomRight.addEventListener('click', (event) => {
     }
   }
 });
+
+function check() {
+  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length -1]) good = false;
+
+  if (playerOrder.length == 20 && good) {
+    winGame();
+}
+  if (good == false) {
+    flashColour();
+    turnCounter.innerHTML = 'NO!';
+    setTimeout(() => {
+      turnCounter.innerHTML = turn;
+      clearColour();
+
+      if (strict) {
+        play();
+      } else {
+        compTurn = true;
+        flash = 0;
+        playerOrder = [];
+        good = true;
+        intervalId = setInterval(gameTurn, 800);
+      }
+    }, 800);
+
+    noise = false;
+  }
+
+  if (turn == playerOrder.length && good && !win) {
+    turn++;
+    playerOrder = [];
+    compTurn = true;
+    flash = 0;
+    turnCounter.innerHTML = turn;
+    intervalId = setInterval(gameTurn, 800);
+  }
+}
+
+function winGame() {
+  flashColour();
+  turnCounter.innerHTML = 'WIN!';
+  on = false;
+  win = true;
+}
